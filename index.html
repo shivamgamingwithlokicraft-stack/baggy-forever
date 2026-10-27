@@ -3,49 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BAGGY FOREVER — Premium Fashion</title>
-  <meta name="description" content="Discover curated fashion at BAGGY FOREVER. Shop premium streetwear, vintage finds, and everyday essentials." />
+  <title>BAGGY FOREVER — Premium Streetwear</title>
+  <meta name="description" content="Discover curated premium streetwear, vintage finds, and everyday essentials at BAGGY FOREVER. Bhopal, India." />
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
   <style>
     /* ===== DESIGN SYSTEM ===== */
     :root {
-      --bg: #faf9f7;
-      --bg-alt: #f2efe9;
+      /* Core Palette — Editorial Streetwear */
+      --bg: #f4f2ed;
+      --bg-alt: #e8e4db;
       --surface: #ffffff;
-      --ink: #1a1a1a;
-      --ink-light: #4a4a4a;
+      --ink: #111111;
+      --ink-light: #3d3d3d;
       --muted: #7a7a7a;
-      --line: #e5e0d8;
-      --accent: #1a1a1a;
-      --danger: #d32f2f;
+      --line: #d4cfc4;
+      --accent: #ff3b1f;      /* Signature Red */
+      --accent-dark: #cc2e18;
       --success: #2e7d32;
+      --danger: #d32f2f;
       
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Inter', sans-serif;
+      /* Typography */
       --font-display: 'Anton', sans-serif;
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
       
-      --r-sm: 4px;
-      --r-md: 8px;
-      --r-lg: 16px;
+      /* Spacing & Radii */
+      --r-sm: 2px;
+      --r-md: 4px;
+      --r-lg: 8px;
       --space-xs: 8px;
       --space-sm: 16px;
       --space-md: 24px;
       --space-lg: 48px;
-      --space-xl: 80px;
+      --space-xl: 96px;
       
+      /* Shadows */
       --sh-sm: 0 2px 8px rgba(0,0,0,0.04);
       --sh-md: 0 8px 24px rgba(0,0,0,0.08);
       --sh-lg: 0 16px 48px rgba(0,0,0,0.12);
       
+      /* Motion */
       --ease: cubic-bezier(0.25, 1, 0.5, 1);
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur-fast: 200ms;
+      --dur-med: 400ms;
+      --dur-slow: 700ms;
       
-      --nav-height: 80px;
+      --nav-height: 72px;
     }
 
     /* ===== RESET ===== */
@@ -54,24 +63,25 @@
     body {
       background-color: var(--bg);
       color: var(--ink);
-      font-family: var(--font-sans);
+      font-family: var(--font-body);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     /* Typography */
-    h1, h2, h3, h4 { font-weight: 400; line-height: 1.1; color: var(--ink); }
-    h1, h2, h3 { font-family: var(--font-serif); }
-    h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); }
-    h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    h1, h2, h3, h4 { font-weight: 400; line-height: 1.05; color: var(--ink); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
+    h1 { font-size: clamp(3rem, 8vw, 7rem); }
+    h2 { font-size: clamp(2.2rem, 5vw, 4rem); }
+    h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
     
-    a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease); }
+    .serif { font-family: var(--font-sans); text-transform: none; letter-spacing: -0.02em; font-weight: 500; }
+    
+    a { color: inherit; text-decoration: none; transition: color var(--dur-fast) var(--ease); }
     button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
     img { display: block; max-width: 100%; }
     input, textarea, select { font-family: inherit; }
-    ::selection { background: var(--ink); color: var(--bg); }
+    ::selection { background: var(--accent); color: #fff; }
 
     /* Utilities */
     .container { max-width: 1440px; margin: 0 auto; padding: 0 var(--space-md); }
@@ -79,88 +89,117 @@
     .items-center { align-items: center; }
     .justify-between { justify-content: space-between; }
     .hidden { display: none !important; }
+    .text-center { text-align: center; }
 
-    /* Buttons */
+    /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 14px 28px; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      border-radius: var(--r-sm); transition: all 0.3s var(--ease); cursor: pointer;
+      padding: 16px 32px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: var(--r-sm); transition: all var(--dur-fast) var(--ease); cursor: pointer;
+      position: relative; overflow: hidden;
     }
-    .btn-primary { background: var(--ink); color: var(--surface); border: 1px solid var(--ink); }
-    .btn-primary:hover { background: #333; border-color: #333; transform: translateY(-2px); }
+    .btn-primary { background: var(--ink); color: #fff; border: 1px solid var(--ink); }
+    .btn-primary::after {
+      content: ''; position: absolute; inset: 0; background: var(--accent);
+      transform: translateY(100%); transition: transform var(--dur-fast) var(--ease);
+      z-index: 1;
+    }
+    .btn-primary:hover::after { transform: translateY(0); }
+    .btn-primary span { position: relative; z-index: 2; }
+    .btn-primary:hover span { color: #fff; }
+    
     .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-    .btn-outline:hover { background: var(--ink); color: var(--surface); transform: translateY(-2px); }
-    .btn-sm { padding: 10px 20px; font-size: 0.7rem; }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-outline:hover { background: var(--ink); color: #fff; }
+    
+    .btn-accent { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-accent:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--sh-md); }
+    
+    .btn-sm { padding: 12px 24px; font-size: 0.7rem; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
     /* ===== NAVIGATION ===== */
     .navbar {
       position: sticky; top: 0; height: var(--nav-height);
-      background: rgba(250, 249, 247, 0.95); backdrop-filter: blur(12px);
+      background: rgba(244, 242, 237, 0.92); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line); z-index: 90;
+      transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease), background var(--dur-med) var(--ease);
     }
+    .navbar.scrolled { background: rgba(244, 242, 237, 0.98); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .navbar-inner {
       max-width: 1440px; margin: 0 auto; padding: 0 var(--space-md);
       height: 100%; display: flex; align-items: center; justify-content: space-between;
     }
     .brand-logo {
-      font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em;
+      font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.02em;
       text-transform: uppercase; cursor: pointer; display: flex; align-items: baseline; gap: 2px;
+      transition: transform var(--dur-fast) var(--ease);
     }
-    .brand-logo span { color: var(--muted); font-weight: 300; }
+    .brand-logo:hover { transform: scale(1.02); }
+    .brand-logo span { color: var(--accent); }
     
     .nav-links { display: flex; gap: var(--space-lg); align-items: center; }
     .nav-links a {
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
       text-transform: uppercase; position: relative; padding: 8px 0;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 0; width: 0;
-      height: 1px; background: var(--ink); transition: width 0.3s var(--ease);
+      height: 2px; background: var(--accent); transition: width var(--dur-fast) var(--ease);
     }
     .nav-links a:hover::after { width: 100%; }
 
-    .nav-actions { display: flex; gap: var(--space-sm); align-items: center; }
+    .nav-actions { display: flex; gap: 4px; align-items: center; }
     .icon-btn {
-      width: 40px; height: 40px; display: grid; place-items: center;
-      border-radius: 50%; transition: background 0.2s; position: relative;
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border-radius: 50%; transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease-spring); position: relative;
     }
-    .icon-btn:hover { background: var(--bg-alt); }
-    .icon-btn svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.5; }
+    .icon-btn:hover { background: var(--bg-alt); transform: scale(1.08); }
+    .icon-btn svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.8; }
     
     .cart-count {
-      position: absolute; top: 2px; right: 2px; background: var(--ink); color: var(--surface);
-      font-size: 0.6rem; font-weight: 700; width: 16px; height: 16px;
+      position: absolute; top: 4px; right: 4px; background: var(--accent); color: #fff;
+      font-family: var(--font-sans); font-size: 0.6rem; font-weight: 700; width: 18px; height: 18px;
       border-radius: 50%; display: grid; place-items: center;
+      transition: transform var(--dur-fast) var(--ease-spring);
     }
+    .cart-count.bump { animation: badgeBump var(--dur-fast) var(--ease-spring); }
+    @keyframes badgeBump { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
     .mobile-menu-btn { display: none; }
 
     /* ===== HERO ===== */
     .hero {
-      position: relative; height: calc(100vh - var(--nav-height)); min-height: 600px;
-      max-height: 900px; background: var(--bg-alt); overflow: hidden;
+      position: relative; height: calc(100vh - var(--nav-height)); min-height: 650px;
+      max-height: 950px; background: var(--ink); overflow: hidden;
       display: flex; align-items: center;
     }
-    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(250,249,247,0.9) 0%, rgba(250,249,247,0.4) 50%, transparent 100%); }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0.85; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.4) 60%, transparent 100%); }
     .hero-content {
-      position: relative; z-index: 2; max-width: 600px;
-      padding: var(--space-xl) var(--space-lg); animation: fadeUp 1s var(--ease-out) forwards;
-      opacity: 0; transform: translateY(30px);
+      position: relative; z-index: 2; max-width: 700px;
+      padding: var(--space-xl) var(--space-lg); color: #fff;
     }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    .hero-subtitle { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: var(--space-sm); display: block; }
-    .hero-title { margin-bottom: var(--space-md); }
-    .hero-title em { font-style: italic; font-weight: 600; }
-    .hero-desc { font-size: 1.1rem; color: var(--ink-light); margin-bottom: var(--space-lg); max-width: 450px; line-height: 1.6; }
-    .hero-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+    .hero-subtitle { 
+      font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; 
+      color: var(--accent); margin-bottom: var(--space-sm); display: block; 
+      opacity: 0; animation: slideUp 0.8s var(--ease-out) 0.2s forwards; 
+    }
+    .hero-title { margin-bottom: var(--space-md); color: #fff; opacity: 0; animation: slideUp 0.8s var(--ease-out) 0.4s forwards; }
+    .hero-title span { color: var(--accent); }
+    .hero-desc { 
+      font-family: var(--font-body); font-size: 1.1rem; color: rgba(255,255,255,0.8); 
+      margin-bottom: var(--space-lg); max-width: 500px; line-height: 1.7; 
+      opacity: 0; animation: slideUp 0.8s var(--ease-out) 0.6s forwards; 
+    }
+    .hero-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; opacity: 0; animation: slideUp 0.8s var(--ease-out) 0.8s forwards; }
+    
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ===== SECTIONS ===== */
+    /* ===== SECTION STYLES ===== */
     .section { padding: var(--space-xl) 0; }
     .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-lg); flex-wrap: wrap; gap: var(--space-md); }
     .section-header h2 { margin-bottom: 8px; }
-    .section-header p { color: var(--muted); font-size: 0.95rem; max-width: 500px; }
+    .section-header p { color: var(--muted); font-family: var(--font-body); font-size: 0.95rem; max-width: 500px; }
 
     /* ===== PRODUCT GRID ===== */
     .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
@@ -169,237 +208,267 @@
 
     .product-card {
       background: var(--surface); border-radius: var(--r-md); overflow: hidden;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-      cursor: pointer; display: flex; flex-direction: column;
+      transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+      cursor: pointer; display: flex; flex-direction: column; position: relative;
+      border: 1px solid transparent;
     }
-    .product-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .product-card:hover { transform: translateY(-8px); box-shadow: var(--sh-md); border-color: var(--line); }
     .product-image-wrapper { position: relative; aspect-ratio: 4/5; background: var(--bg-alt); overflow: hidden; }
-    .product-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-    .product-card:hover .product-image-wrapper img { transform: scale(1.03); }
+    .product-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+    .product-card:hover .product-image-wrapper img { transform: scale(1.06); }
     
     .product-badge {
-      position: absolute; top: 12px; left: 12px; background: var(--surface); color: var(--ink);
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 4px 10px; border-radius: var(--r-sm); box-shadow: var(--sh-sm);
+      position: absolute; top: 16px; left: 16px; background: var(--accent); color: #fff;
+      font-family: var(--font-sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; 
+      text-transform: uppercase; padding: 5px 12px; border-radius: var(--r-sm); z-index: 2;
     }
     
     .wishlist-btn {
-      position: absolute; top: 12px; right: 12px; width: 36px; height: 36px;
-      border-radius: 50%; background: rgba(255,255,255,0.9);
-      display: grid; place-items: center; transition: all 0.2s; z-index: 2;
+      position: absolute; top: 12px; right: 12px; width: 40px; height: 40px;
+      border-radius: 50%; background: rgba(255,255,255,0.95); backdrop-filter: blur(4px);
+      display: grid; place-items: center; transition: all var(--dur-fast) var(--ease); z-index: 2;
+      opacity: 0; transform: translateY(-8px);
     }
-    .wishlist-btn:hover { background: var(--surface); transform: scale(1.1); }
-    .wishlist-btn svg { width: 18px; height: 18px; stroke: var(--ink); fill: none; stroke-width: 1.5; transition: all 0.2s; }
-    .wishlist-btn.active svg { fill: var(--ink); }
+    .product-card:hover .wishlist-btn { opacity: 1; transform: translateY(0); }
+    .wishlist-btn svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.8; transition: all var(--dur-fast) var(--ease); }
+    .wishlist-btn.active svg { fill: var(--accent); stroke: var(--accent); }
+    .wishlist-btn.pop { animation: heartPop var(--dur-fast) var(--ease-spring); }
+    @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 
-    .product-info { padding: var(--space-sm); display: flex; flex-direction: column; flex: 1; }
-    .product-name { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; color: var(--ink); line-height: 1.4; }
-    .product-category { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-xs); }
-    .product-price { font-weight: 600; font-size: 1rem; margin-top: auto; }
+    .product-info { padding: var(--space-md); display: flex; flex-direction: column; flex: 1; }
+    .product-name { 
+      font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; 
+      color: var(--ink); line-height: 1.3; text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .product-category { font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .product-price { font-family: var(--font-sans); font-weight: 700; font-size: 1.1rem; margin-top: auto; color: var(--ink); }
     .product-price s { color: var(--muted); font-weight: 400; font-size: 0.85rem; margin-left: 8px; }
 
     /* ===== SHOP PAGE ===== */
-    .shop-layout { display: grid; grid-template-columns: 240px 1fr; gap: var(--space-xl); align-items: start; }
+    .shop-layout { display: grid; grid-template-columns: 260px 1fr; gap: var(--space-xl); align-items: start; }
     @media (max-width: 900px) { .shop-layout { grid-template-columns: 1fr; gap: var(--space-md); } .filters-sidebar { display: none; } }
     
     .filters-sidebar { position: sticky; top: calc(var(--nav-height) + var(--space-md)); }
     .filter-group { margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid var(--line); }
-    .filter-group h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-sm); }
-    .filter-list { display: flex; flex-direction: column; gap: 8px; }
-    .filter-list label { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--ink-light); cursor: pointer; }
-    .filter-list input[type="checkbox"] { accent-color: var(--ink); width: 16px; height: 16px; }
+    .filter-group h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .filter-list { display: flex; flex-direction: column; gap: 10px; }
+    .filter-list label { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-light); cursor: pointer; transition: color var(--dur-fast) var(--ease); }
+    .filter-list label:hover { color: var(--ink); }
+    .filter-list input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
     
     .shop-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); flex-wrap: wrap; gap: var(--space-sm); }
-    .sort-select { padding: 8px 12px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); font-size: 0.85rem; color: var(--ink); cursor: pointer; }
+    .sort-select { 
+      padding: 10px 16px; border: 1px solid var(--line); border-radius: var(--r-sm); 
+      background: var(--surface); font-size: 0.85rem; color: var(--ink); cursor: pointer; 
+      font-family: var(--font-sans); font-weight: 500;
+    }
+    .sort-select:focus { outline: none; border-color: var(--ink); }
 
     /* ===== PRODUCT DETAIL ===== */
     .pdp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); padding-top: var(--space-lg); }
     @media (max-width: 900px) { .pdp-layout { grid-template-columns: 1fr; gap: var(--space-lg); } }
     
     .pdp-gallery { position: sticky; top: calc(var(--nav-height) + var(--space-md)); }
-    .pdp-main-image { width: 100%; aspect-ratio: 4/5; background: var(--bg-alt); border-radius: var(--r-md); overflow: hidden; margin-bottom: var(--space-sm); }
-    .pdp-main-image img { width: 100%; height: 100%; object-fit: cover; }
+    .pdp-main-image { width: 100%; aspect-ratio: 4/5; background: var(--bg-alt); border-radius: var(--r-md); overflow: hidden; margin-bottom: var(--space-sm); position: relative; }
+    .pdp-main-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+    .pdp-main-image:hover img { transform: scale(1.03); }
     
+    .pdp-thumbnails { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .pdp-thumb { 
+      aspect-ratio: 1; border-radius: var(--r-sm); overflow: hidden; cursor: pointer; 
+      border: 2px solid transparent; transition: border-color var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease); 
+      opacity: 0.6;
+    }
+    .pdp-thumb:hover { opacity: 1; }
+    .pdp-thumb.active { border-color: var(--ink); opacity: 1; }
+    .pdp-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
     .pdp-info { padding-top: var(--space-sm); }
-    .breadcrumb { font-size: 0.8rem; color: var(--muted); margin-bottom: var(--space-md); display: flex; gap: 8px; align-items: center; }
+    .breadcrumb { font-family: var(--font-sans); font-size: 0.8rem; color: var(--muted); margin-bottom: var(--space-md); display: flex; gap: 8px; align-items: center; }
     .breadcrumb a { color: var(--muted); } .breadcrumb a:hover { color: var(--ink); } .breadcrumb span { color: var(--ink); }
     
-    .pdp-title { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: var(--space-xs); }
-    .pdp-price { font-size: 1.4rem; font-weight: 500; margin-bottom: var(--space-md); }
+    .pdp-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--space-xs); }
+    .pdp-price { font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; margin-bottom: var(--space-md); color: var(--accent); }
     .pdp-price s { color: var(--muted); font-size: 1rem; font-weight: 400; margin-left: 12px; }
-    .pdp-desc { color: var(--ink-light); line-height: 1.7; margin-bottom: var(--space-lg); font-size: 1rem; }
+    .pdp-desc { font-family: var(--font-body); color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-lg); font-size: 1rem; }
     
     .pdp-options { margin-bottom: var(--space-lg); }
-    .pdp-options h4 { font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .pdp-options h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
     .size-selector { display: flex; gap: 8px; flex-wrap: wrap; }
     .size-btn {
-      min-width: 48px; height: 48px; border: 1px solid var(--line); border-radius: var(--r-sm);
-      display: grid; place-items: center; font-weight: 500; transition: all 0.2s;
+      min-width: 52px; height: 52px; border: 1px solid var(--line); border-radius: var(--r-sm);
+      display: grid; place-items: center; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem;
+      transition: all var(--dur-fast) var(--ease); background: var(--surface);
     }
     .size-btn:hover { border-color: var(--ink); }
-    .size-btn.selected { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+    .size-btn.selected { background: var(--ink); color: #fff; border-color: var(--ink); transform: scale(1.05); }
     
     .pdp-actions { display: flex; gap: var(--space-sm); margin-bottom: var(--space-lg); }
-    .pdp-actions .btn-primary { flex: 1; padding: 18px; font-size: 0.85rem; }
-    .pdp-actions .btn-outline { flex: 1; padding: 18px; font-size: 0.85rem; }
+    .pdp-actions .btn-primary { flex: 1; padding: 20px; font-size: 0.9rem; }
+    .pdp-actions .btn-outline { flex: 0 0 auto; padding: 20px; }
     
-    .pdp-ar-teaser { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--space-md); text-align: center; margin-bottom: var(--space-lg); }
-    .pdp-ar-teaser h4 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 4px; }
-    .pdp-ar-teaser p { font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; }
+    .pdp-ar-teaser { background: var(--bg-alt); border: 1px dashed var(--line); border-radius: var(--r-md); padding: var(--space-md); text-align: center; margin-bottom: var(--space-lg); }
+    .pdp-ar-teaser h4 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 6px; color: var(--accent); }
+    .pdp-ar-teaser p { font-family: var(--font-body); font-size: 0.9rem; color: var(--muted); margin-bottom: 14px; }
     
     .pdp-specs { border-top: 1px solid var(--line); padding-top: var(--space-md); margin-top: var(--space-md); }
-    .spec-row { display: flex; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
-    .spec-row .label { width: 120px; color: var(--muted); flex-shrink: 0; }
+    .spec-row { display: flex; padding: 14px 0; border-bottom: 1px solid var(--line); font-family: var(--font-body); font-size: 0.9rem; }
+    .spec-row .label { width: 140px; color: var(--muted); flex-shrink: 0; }
     .spec-row .value { font-weight: 500; color: var(--ink); }
 
     /* ===== REVIEWS ===== */
-    .reviews-section { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--line); }
+    .reviews-section { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 2px solid var(--ink); }
     .review-list { display: grid; gap: var(--space-md); margin-top: var(--space-md); }
-    .review-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--space-md); }
+    .review-card { 
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); 
+      padding: var(--space-md); transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); 
+    }
+    .review-card:hover { transform: translateY(-2px); box-shadow: var(--sh-sm); }
     .review-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .review-author { font-weight: 600; } .review-date { color: var(--muted); font-size: 0.85rem; }
-    .review-stars { color: var(--ink); margin-bottom: 8px; letter-spacing: 2px; }
-    .review-text { color: var(--ink-light); font-size: 0.95rem; line-height: 1.6; }
+    .review-author { font-family: var(--font-sans); font-weight: 700; } 
+    .review-date { color: var(--muted); font-size: 0.85rem; font-family: var(--font-body); }
+    .review-stars { color: var(--accent); margin-bottom: 8px; letter-spacing: 2px; font-size: 1.1rem; }
+    .review-text { color: var(--ink-light); font-size: 0.95rem; line-height: 1.7; font-family: var(--font-body); }
 
-    /* ===== FOOTER ===== */
-    .footer { background: var(--surface); border-top: 1px solid var(--line); padding: var(--space-xl) 0 var(--space-md); }
+    /* ===== STORE INFO & FOOTER ===== */
+    .footer { background: var(--ink); color: #fff; padding: var(--space-xl) 0 var(--space-md); margin-top: var(--space-xl); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg); }
     @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: var(--space-md); } }
     
-    .footer-brand h3 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: var(--space-sm); }
-    .footer-brand p { color: var(--muted); font-size: 0.9rem; max-width: 300px; line-height: 1.6; }
+    .footer-brand h3 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: var(--space-sm); color: #fff; }
+    .footer-brand p { color: rgba(255,255,255,0.6); font-family: var(--font-body); font-size: 0.9rem; max-width: 300px; line-height: 1.7; }
     
-    .footer-col h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-sm); }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col a { font-size: 0.9rem; color: var(--muted); } .footer-col a:hover { color: var(--ink); }
+    .footer-col h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); color: var(--accent); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-family: var(--font-body); font-size: 0.9rem; color: rgba(255,255,255,0.6); transition: color var(--dur-fast) var(--ease); } 
+    .footer-col a:hover { color: #fff; }
     
-    .footer-bottom { border-top: 1px solid var(--line); padding-top: var(--space-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); font-size: 0.8rem; color: var(--muted); }
+    .footer-bottom { 
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-md); 
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); 
+      font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4); 
+    }
+
+    .store-info-section { background: var(--surface); padding: var(--space-xl) 0; border-top: 1px solid var(--line); }
+    .store-detail { display: flex; gap: var(--space-sm); margin-bottom: var(--space-md); }
+    .store-detail svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+    .store-detail h4 { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .store-detail p { font-family: var(--font-body); color: var(--ink-light); font-size: 0.95rem; line-height: 1.6; }
 
     /* ===== CART DRAWER ===== */
-    .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 200; opacity: 0; pointer-events: none; transition: opacity var(--dur-med) var(--ease); }
     .cart-overlay.active { opacity: 1; pointer-events: all; }
     
     .cart-drawer {
-      position: fixed; top: 0; right: 0; width: 100%; max-width: 440px; height: 100vh;
+      position: fixed; top: 0; right: 0; width: 100%; max-width: 460px; height: 100vh;
       background: var(--surface); z-index: 210; display: flex; flex-direction: column;
-      transform: translateX(100%); transition: transform 0.4s var(--ease-out); box-shadow: var(--sh-lg);
+      transform: translateX(100%); transition: transform var(--dur-med) var(--ease-out); box-shadow: var(--sh-lg);
     }
     .cart-drawer.active { transform: translateX(0); }
     
     .cart-header { padding: var(--space-md); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
-    .cart-header h3 { font-family: var(--font-serif); font-size: 1.5rem; }
+    .cart-header h3 { font-family: var(--font-display); font-size: 1.5rem; }
     
     .cart-items { flex: 1; overflow-y: auto; padding: var(--space-md); }
     .cart-empty { text-align: center; padding: var(--space-xl) var(--space-md); color: var(--muted); }
-    .cart-item { display: flex; gap: var(--space-sm); padding: var(--space-sm) 0; border-bottom: 1px solid var(--line); }
-    .cart-item-img { width: 80px; height: 100px; border-radius: var(--r-sm); overflow: hidden; background: var(--bg-alt); }
+    .cart-item { display: flex; gap: var(--space-sm); padding: var(--space-sm) 0; border-bottom: 1px solid var(--line); animation: slideIn var(--dur-med) var(--ease-out); }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    .cart-item-img { width: 80px; height: 100px; border-radius: var(--r-sm); overflow: hidden; background: var(--bg-alt); flex-shrink: 0; }
     .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
     .cart-item-info { flex: 1; }
-    .cart-item-info h4 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
-    .cart-item-info p { font-size: 0.85rem; color: var(--muted); }
-    .cart-item-price { font-weight: 600; margin-top: 8px; }
+    .cart-item-info h4 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
+    .cart-item-info p { font-family: var(--font-body); font-size: 0.85rem; color: var(--muted); }
+    .cart-item-price { font-family: var(--font-sans); font-weight: 700; margin-top: 8px; color: var(--accent); }
     
     .cart-item-actions { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
-    .qty-btn { width: 24px; height: 24px; border: 1px solid var(--line); border-radius: var(--r-sm); display: grid; place-items: center; font-size: 1rem; }
-    .qty-btn:hover { border-color: var(--ink); }
-    .remove-btn { margin-left: auto; font-size: 0.75rem; color: var(--muted); text-decoration: underline; }
+    .qty-btn { 
+      width: 28px; height: 28px; border: 1px solid var(--line); border-radius: var(--r-sm); 
+      display: grid; place-items: center; font-size: 1rem; transition: all var(--dur-fast) var(--ease); 
+    }
+    .qty-btn:hover { border-color: var(--ink); background: var(--bg-alt); }
+    .remove-btn { margin-left: auto; font-family: var(--font-sans); font-size: 0.75rem; color: var(--muted); text-decoration: underline; transition: color var(--dur-fast) var(--ease); }
+    .remove-btn:hover { color: var(--danger); }
 
     .cart-footer { padding: var(--space-md); border-top: 1px solid var(--line); background: var(--bg); }
-    .cart-total-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; color: var(--ink-light); }
-    .cart-total-row.grand-total { font-size: 1.1rem; font-weight: 600; color: var(--ink); margin: var(--space-sm) 0; padding-top: var(--space-sm); border-top: 1px solid var(--line); }
+    .cart-total-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: var(--font-body); font-size: 0.9rem; color: var(--ink-light); }
+    .cart-total-row.grand-total { 
+      font-family: var(--font-sans); font-size: 1.2rem; font-weight: 700; color: var(--ink); 
+      margin: var(--space-sm) 0; padding-top: var(--space-sm); border-top: 1px solid var(--line); 
+    }
 
     /* ===== MODALS ===== */
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
       z-index: 300; display: grid; place-items: center; padding: var(--space-md);
-      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+      opacity: 0; pointer-events: none; transition: opacity var(--dur-med) var(--ease);
     }
     .modal-overlay.active { opacity: 1; pointer-events: all; }
     
     .modal-content {
-      background: var(--surface); border-radius: var(--r-lg); width: 100%; max-width: 500px;
-      padding: var(--space-lg); position: relative; transform: translateY(20px);
-      transition: transform 0.3s var(--ease-out);
+      background: var(--surface); border-radius: var(--r-lg); width: 100%; max-width: 520px;
+      padding: var(--space-lg); position: relative; transform: translateY(30px) scale(0.96);
+      transition: transform var(--dur-med) var(--ease-out);
     }
-    .modal-overlay.active .modal-content { transform: translateY(0); }
+    .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
     
-    .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; display: grid; place-items: center; font-size: 1.5rem; color: var(--muted); border-radius: 50%; }
+    .modal-close { 
+      position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; 
+      display: grid; place-items: center; font-size: 1.5rem; color: var(--muted); border-radius: 50%; 
+      transition: background var(--dur-fast) var(--ease); 
+    }
     .modal-close:hover { background: var(--bg-alt); color: var(--ink); }
     
-    .modal-content h3 { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 12px; }
-    .modal-content p { color: var(--ink-light); line-height: 1.6; margin-bottom: var(--space-md); }
+    .modal-content h3 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 12px; }
+    .modal-content p { font-family: var(--font-body); color: var(--ink-light); line-height: 1.7; margin-bottom: var(--space-md); }
 
     /* ===== TOAST ===== */
     .toast {
-      position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 100px);
-      background: var(--ink); color: var(--surface); padding: 12px 24px; border-radius: 50px;
-      font-size: 0.85rem; font-weight: 500; z-index: 400; opacity: 0;
-      transition: all 0.4s var(--ease-out); pointer-events: none; box-shadow: var(--sh-md);
+      position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 120px);
+      background: var(--ink); color: #fff; padding: 14px 28px; border-radius: 50px;
+      font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; z-index: 400; 
+      opacity: 0; transition: all var(--dur-med) var(--ease-spring); pointer-events: none; 
+      box-shadow: var(--sh-lg); display: flex; align-items: center; gap: 10px;
     }
     .toast.active { opacity: 1; transform: translate(-50%, 0); }
 
-    /* ===== AUTH / DASHBOARD STYLES ===== */
-    .auth-container { max-width: 400px; margin: var(--space-xl) auto; padding: var(--space-lg); background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--sh-md); }
-    .auth-container h2 { text-align: center; margin-bottom: var(--space-md); }
-    .auth-form { display: flex; flex-direction: column; gap: var(--space-sm); }
-    .form-group { display: flex; flex-direction: column; gap: 4px; }
-    .form-group label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-    .form-group input, .form-group select {
-      padding: 12px; border: 1px solid var(--line); border-radius: var(--r-sm);
-      font-size: 0.95rem; background: var(--bg); transition: border-color 0.2s;
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      background: var(--ink); color: #fff; border-radius: 50%;
+      display: grid; place-items: center; z-index: 100;
+      opacity: 0; pointer-events: none; transform: translateY(20px);
+      transition: all var(--dur-fast) var(--ease-out); box-shadow: var(--sh-md);
     }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--ink); }
-    .auth-switch { text-align: center; margin-top: var(--space-md); font-size: 0.85rem; color: var(--muted); }
-    .auth-switch a { color: var(--ink); font-weight: 600; cursor: pointer; }
-    .auth-switch a:hover { text-decoration: underline; }
-    
-    .dashboard-container { display: grid; grid-template-columns: 250px 1fr; gap: var(--space-lg); padding: var(--space-lg) 0; min-height: 80vh; }
-    @media (max-width: 768px) { .dashboard-container { grid-template-columns: 1fr; } }
-    
-    .dashboard-sidebar { background: var(--surface); border-radius: var(--r-md); padding: var(--space-md); border: 1px solid var(--line); height: fit-content; }
-    .dashboard-sidebar h3 { font-size: 1.1rem; margin-bottom: var(--space-sm); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
-    .dashboard-nav { display: flex; flex-direction: column; gap: 4px; }
-    .dashboard-nav a {
-      padding: 10px 12px; border-radius: var(--r-sm); font-size: 0.9rem;
-      transition: background 0.2s; cursor: pointer; display: flex; align-items: center; gap: 8px;
-    }
-    .dashboard-nav a:hover, .dashboard-nav a.active { background: var(--bg-alt); font-weight: 500; }
-    
-    .dashboard-main { background: var(--surface); border-radius: var(--r-md); padding: var(--space-lg); border: 1px solid var(--line); }
-    .dashboard-main h2 { margin-bottom: var(--space-md); }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-lg); }
-    .stat-card { background: var(--bg); padding: var(--space-md); border-radius: var(--r-md); text-align: center; }
-    .stat-card .number { font-size: 2rem; font-weight: 700; font-family: var(--font-serif); }
-    .stat-card .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-
-    .admin-table { width: 100%; border-collapse: collapse; margin-top: var(--space-md); }
-    .admin-table th, .admin-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
-    .admin-table th { font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--muted); }
-    .admin-table tr:hover { background: var(--bg-alt); }
-
-    /* ===== ANIMATIONS ===== */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .back-to-top:hover { background: var(--accent); transform: translateY(-4px); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      :root { --space-xl: 48px; --space-lg: 32px; }
+      :root { --space-xl: 56px; --space-lg: 36px; }
       .nav-links { display: none; }
       .mobile-menu-btn { display: grid; }
       .navbar-inner { padding: 0 var(--space-sm); }
       .hero-content { padding: var(--space-lg) var(--space-md); }
+      .hero-title { font-size: 3rem; }
       .pdp-actions { flex-direction: column; }
+      .pdp-actions .btn-outline { width: 100%; }
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- NAVIGATION -->
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <div class="navbar-inner">
       <div class="brand-logo" onclick="navigate('home')">
         BAGGY<span>FOREVER</span>
@@ -408,13 +477,12 @@
       <nav class="nav-links">
         <a onclick="navigate('home')">Home</a>
         <a onclick="navigate('shop')">Shop All</a>
-        <a onclick="navigate('shop', {cat: 'new'})">New Arrivals</a>
+        <a onclick="navigate('shop', {cat: 'tshirts'})">T-Shirts</a>
+        <a onclick="navigate('shop', {cat: 'hoodies'})">Hoodies</a>
         <a onclick="navigate('about')">About</a>
-        <a onclick="navigate('contact')">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <!-- Account / Login Button -->
         <button class="icon-btn" onclick="handleAuthClick()" aria-label="Account" id="auth-btn">
           <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </button>
@@ -446,8 +514,10 @@
       <div class="cart-total-row"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
       <div class="cart-total-row"><span>Shipping</span><span>Calculated at checkout</span></div>
       <div class="cart-total-row grand-total"><span>Total</span><span id="cart-total">₹0</span></div>
-      <button class="btn btn-primary" style="width:100%" onclick="handleCheckout()">CHECKOUT — COMING SOON</button>
-      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:12px;">Online purchasing will be available soon.</p>
+      <button class="btn btn-accent" style="width:100%" onclick="handleCheckout()">
+        <span>CHECKOUT — COMING SOON</span>
+      </button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:12px; font-family:var(--font-body);">Online purchasing will be available soon.</p>
     </div>
   </aside>
 
@@ -462,108 +532,100 @@
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <script>
     /* =========================================================================
-       DATA & STATE
+       PRODUCT DATA — EXTENDED CATALOGUE
        ========================================================================= */
     
-    // Product Dataset (Clothing only - no human models)
     const PRODUCTS = [
       {
-        id: 'bf-001',
-        name: 'Black Harocott Hoodie',
-        price: 1200,
-        mrp: 1800,
-        category: 'new',
+        id: 'ts-001', name: 'Oversized Heavyweight Tee', price: 799, mrp: 1200, category: 'tshirts', badge: 'New',
         sizes: ['S', 'M', 'L', 'XL'],
-        image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=800&auto=format&fit=crop'
+        ],
+        description: 'Premium heavyweight cotton tee with a relaxed, oversized fit. Features a ribbed crew neck and dropped shoulders.',
+        specs: { Fabric: '100% Cotton (240 GSM)', Fit: 'Oversized', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: [{ author: 'Rahul S.', date: '2 weeks ago', stars: 5, text: 'Insane quality. The fit is perfect and the material feels premium.' }]
+      },
+      {
+        id: 'ts-002', name: 'Classic White Crew Tee', price: 499, mrp: 799, category: 'tshirts', badge: '',
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop'],
+        description: 'A timeless essential. This classic crew-neck tee is cut from soft, breathable cotton.',
+        specs: { Fabric: '100% Cotton (180 GSM)', Fit: 'Regular', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: []
+      },
+      {
+        id: 'hd-001', name: 'Black Harocott Hoodie', price: 1200, mrp: 1800, category: 'hoodies', badge: 'New',
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: [
+          'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop'
+        ],
         description: 'Premium heavyweight cotton hoodie with custom sleeve print. Relaxed fit for everyday wear.',
-        specs: { Fabric: '100% Cotton', Fit: 'Oversized', Care: 'Machine wash cold' },
-        badge: 'New',
-        reviews: [
-          { author: 'Rahul S.', date: '2 weeks ago', stars: 5, text: 'Insane quality. The fit is perfect and the material feels premium.' }
-        ]
+        specs: { Fabric: '100% Cotton Fleece', Fit: 'Oversized', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: [{ author: 'Priya M.', date: '1 month ago', stars: 4, text: 'Really unique piece. Got so many compliments.' }]
       },
       {
-        id: 'bf-002',
-        name: 'Brown Zip-Up Set',
-        price: 1899,
-        mrp: 2800,
-        category: 'vintage',
-        sizes: ['M', 'L'],
-        image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=800&auto=format&fit=crop',
-        description: 'Matching brown zip-up hoodie and wide-leg pants. Vintage-inspired streetwear silhouette.',
-        specs: { Fabric: 'Cotton blend', Fit: 'Relaxed', Care: 'Hand wash recommended' },
-        badge: 'Rare',
-        reviews: [
-          { author: 'Aman K.', date: '3 weeks ago', stars: 5, text: 'Exactly as shown. This brand never misses.' }
-        ]
-      },
-      {
-        id: 'bf-003',
-        name: 'No Mercy Angel Longsleeve',
-        price: 899,
-        mrp: 1400,
-        category: 'thrift',
-        sizes: ['S', 'M', 'L', 'XL'],
-        image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop',
-        description: 'Oversized longsleeve tee with bold graphic print. Thrifted and curated for unique style.',
-        specs: { Fabric: 'Cotton', Fit: 'Oversized', Care: 'Machine wash cold' },
-        badge: '1 of 1',
-        reviews: []
-      },
-      {
-        id: 'bf-004',
-        name: 'Sherpa Fleece Zip Jacket',
-        price: 1499,
-        mrp: 2200,
-        category: 'surplus',
-        sizes: ['M', 'L', 'XL'],
-        image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop',
-        description: 'Warm sherpa fleece jacket with color-block design. Perfect for layering in colder months.',
-        specs: { Fabric: 'Polyester fleece', Fit: 'Regular', Care: 'Machine wash gentle' },
-        badge: 'Surplus',
-        reviews: []
-      },
-      {
-        id: 'bf-005',
-        name: 'Classic Denim Jacket',
-        price: 1699,
-        mrp: 2499,
-        category: 'new',
-        sizes: ['S', 'M', 'L'],
-        image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop',
-        description: 'Timeless denim jacket with a modern oversized fit. A wardrobe essential.',
-        specs: { Fabric: '100% Cotton Denim', Fit: 'Oversized', Care: 'Machine wash cold' },
-        badge: 'New',
-        reviews: []
-      },
-      {
-        id: 'bf-006',
-        name: 'Cargo Pants - Olive',
-        price: 999,
-        mrp: 1599,
-        category: 'surplus',
+        id: 'tr-001', name: 'Baggy Fit Denim', price: 1499, mrp: 2199, category: 'trousers', badge: 'New',
         sizes: ['30', '32', '34', '36'],
-        image: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=800&auto=format&fit=crop',
+        images: [
+          'https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop'
+        ],
+        description: 'Ultra-relaxed baggy denim with a vintage wash. A staple for any streetwear wardrobe.',
+        specs: { Fabric: '100% Cotton Denim', Fit: 'Baggy', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: []
+      },
+      {
+        id: 'jk-001', name: 'Classic Denim Jacket', price: 1699, mrp: 2499, category: 'jackets', badge: 'New',
+        sizes: ['S', 'M', 'L'],
+        images: [
+          'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=800&auto=format&fit=crop'
+        ],
+        description: 'Timeless denim jacket with a modern oversized fit. A wardrobe essential.',
+        specs: { Fabric: '100% Cotton Denim', Fit: 'Oversized', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: []
+      },
+      {
+        id: 'sh-001', name: 'Oversized Oxford Shirt', price: 1299, mrp: 1899, category: 'shirts', badge: '',
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=800&auto=format&fit=crop'],
+        description: 'A classic Oxford shirt reimagined with a relaxed, oversized fit.',
+        specs: { Fabric: '100% Cotton Oxford', Fit: 'Oversized', Care: 'Machine wash cold', Origin: 'Imported' },
+        reviews: []
+      },
+      {
+        id: 'co-001', name: 'Matching Linen Co-Ord', price: 2499, mrp: 3499, category: 'coords', badge: 'New',
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=800&auto=format&fit=crop'],
+        description: 'A matching shirt and trouser set in breathable linen-blend fabric.',
+        specs: { Fabric: '55% Linen, 45% Cotton', Fit: 'Relaxed', Care: 'Hand wash recommended', Origin: 'Imported' },
+        reviews: []
+      },
+      {
+        id: 'tr-002', name: 'Cargo Pants - Olive', price: 999, mrp: 1599, category: 'trousers', badge: 'Surplus',
+        sizes: ['30', '32', '34', '36'],
+        images: ['https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=800&auto=format&fit=crop'],
         description: 'Utility cargo pants in olive green. Multiple pockets and relaxed fit.',
-        specs: { Fabric: 'Cotton Twill', Fit: 'Relaxed', Care: 'Machine wash cold' },
-        badge: 'Surplus',
+        specs: { Fabric: 'Cotton Twill', Fit: 'Relaxed', Care: 'Machine wash cold', Origin: 'Surplus Stock' },
         reviews: []
       }
     ];
 
-    // State Management
     let state = {
-      view: 'home',
-      currentProduct: null,
-      cart: [],
-      wishlist: [],
-      user: null, // { email, role }
+      view: 'home', currentProduct: null, cart: [], wishlist: [], user: null,
       filters: { category: 'all', sort: 'featured' }
     };
 
-    // Load state from LocalStorage
     function loadState() {
       try {
         const savedCart = localStorage.getItem('bf_cart');
@@ -575,7 +637,6 @@
       } catch (e) { console.error('Error loading state', e); }
     }
 
-    // Save state to LocalStorage
     function saveState() {
       try {
         localStorage.setItem('bf_cart', JSON.stringify(state.cart));
@@ -592,7 +653,7 @@
     
     const showToast = (msg) => {
       const toast = document.getElementById('toast');
-      toast.textContent = msg;
+      toast.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--success)" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ${msg}`;
       toast.classList.add('active');
       setTimeout(() => toast.classList.remove('active'), 2500);
     };
@@ -608,30 +669,43 @@
       }
       saveState();
       renderView();
+      
+      setTimeout(() => {
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+          if (btn.getAttribute('onclick')?.includes(id)) {
+            btn.classList.add('pop');
+            setTimeout(() => btn.classList.remove('pop'), 400);
+          }
+        });
+      }, 10);
     };
 
     const addToCart = (product, size) => {
       if (!size) { showToast('Please select a size'); return; }
       
       const existingItem = state.cart.find(item => item.id === product.id && item.size === size);
-      if (existingItem) {
-        existingItem.qty += 1;
-      } else {
+      if (existingItem) { existingItem.qty += 1; } 
+      else {
         state.cart.push({
           id: product.id, name: product.name, price: product.price,
-          image: product.image, size: size, qty: 1
+          image: product.images[0], size: size, qty: 1
         });
       }
       
       saveState();
       updateCartUI();
       showToast(`${product.name} added to bag`);
+      
+      const badge = document.getElementById('cart-count');
+      badge.classList.add('bump');
+      setTimeout(() => badge.classList.remove('bump'), 300);
     };
 
     const removeFromCart = (id, size) => {
       state.cart = state.cart.filter(item => !(item.id === id && item.size === size));
       saveState();
       updateCartUI();
+      showToast('Item removed');
     };
 
     const updateCartQuantity = (id, size, delta) => {
@@ -656,8 +730,8 @@
       if (state.cart.length === 0) {
         container.innerHTML = `
           <div class="cart-empty">
-            <p>Your bag is empty.</p>
-            <button class="btn btn-outline btn-sm" style="margin-top:16px" onclick="closeCart(); navigate('shop')">Continue Shopping</button>
+            <p style="margin-bottom:20px;">Your bag is empty.</p>
+            <button class="btn btn-outline btn-sm" onclick="closeCart(); navigate('shop')"><span>Continue Shopping</span></button>
           </div>
         `;
         document.getElementById('cart-subtotal').textContent = '₹0';
@@ -677,7 +751,7 @@
               <div class="cart-item-price">${formatCurrency(item.price)}</div>
               <div class="cart-item-actions">
                 <button class="qty-btn" onclick="updateCartQuantity('${item.id}', '${item.size}', -1)">−</button>
-                <span style="font-size:0.85rem; font-weight:500">${item.qty}</span>
+                <span style="font-size:0.85rem; font-weight:600; font-family:var(--font-sans);">${item.qty}</span>
                 <button class="qty-btn" onclick="updateCartQuantity('${item.id}', '${item.size}', 1)">+</button>
                 <button class="remove-btn" onclick="removeFromCart('${item.id}', '${item.size}')">Remove</button>
               </div>
@@ -693,11 +767,13 @@
     function openCart() {
       document.getElementById('cart-drawer').classList.add('active');
       document.getElementById('cart-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeCart() {
       document.getElementById('cart-drawer').classList.remove('active');
       document.getElementById('cart-overlay').classList.remove('active');
+      document.body.style.overflow = '';
     }
 
     /* =========================================================================
@@ -710,44 +786,38 @@
         ${contentHTML}
       `;
       document.getElementById('modal-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal(e) {
       if (e && e.target !== e.currentTarget) return;
       document.getElementById('modal-overlay').classList.remove('active');
+      document.body.style.overflow = '';
     }
 
     function handleCheckout() {
       openModal('Checkout — Coming Soon', `
         <p>We are currently preparing our online checkout experience.</p>
         <p>In the meantime, you can visit our store to make a purchase.</p>
-        <button class="btn btn-primary" style="width:100%" onclick="closeModal()">Continue Browsing</button>
+        <p style="font-size:0.85rem; color:var(--muted);">Store: Aara Machine Road, near Valmiki Mandir, Fish Market, Bhopal.</p>
+        <button class="btn btn-primary" style="width:100%" onclick="closeModal()"><span>Continue Browsing</span></button>
       `);
     }
 
     function handleBuyNow(productId) {
-      // Ensure a size is selected
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
-      
-      if (!selectedSize) {
-        showToast('Please select a size');
-        return;
-      }
+      if (!selectedSize) { showToast('Please select a size'); return; }
       
       addToCart(product, selectedSize);
-      selectedSize = null; // Reset
+      selectedSize = null;
       
-      // Open cart drawer to show the item
       openCart();
-      
-      // Show coming soon message inside the cart footer (already present)
-      // Or open a modal to be explicit
       setTimeout(() => {
         openModal('Purchase — Coming Soon', `
           <p>Online purchasing is coming soon. You can continue exploring our collection.</p>
           <p>Your item has been added to your bag.</p>
-          <button class="btn btn-primary" style="width:100%" onclick="closeModal()">Continue Browsing</button>
+          <button class="btn btn-primary" style="width:100%" onclick="closeModal()"><span>Continue Browsing</span></button>
         `);
       }, 400);
     }
@@ -756,25 +826,20 @@
       openModal('AR Experience — Coming Soon', `
         <p>An exciting new way to explore your favourite looks is coming soon.</p>
         <p>Our augmented reality try-on feature will let you see how our pieces fit in your space before you buy.</p>
-        <button class="btn btn-primary" style="width:100%" onclick="closeModal()">Got it</button>
+        <button class="btn btn-primary" style="width:100%" onclick="closeModal()"><span>Got it</span></button>
       `);
     }
 
     /* =========================================================================
-       AUTHENTICATION & DASHBOARDS
+       AUTHENTICATION
        ========================================================================= */
 
     function handleAuthClick() {
-      if (state.user) {
-        navigate('account');
-      } else {
-        navigate('login');
-      }
+      if (state.user) { navigate('account'); } 
+      else { navigate('login'); }
     }
 
     function handleLogin(email, role) {
-      // Simulated login (frontend only for demonstration)
-      // In a real app, this would validate against a backend
       state.user = { email, role };
       saveState();
       showToast(`Logged in as ${role}`);
@@ -799,6 +864,7 @@
       state.view = view;
       if (view === 'product') {
         state.currentProduct = PRODUCTS.find(p => p.id === params.id);
+        selectedSize = null;
       }
       if (view === 'shop') {
         if (params.cat) state.filters.category = params.cat;
@@ -810,59 +876,33 @@
 
     function renderView() {
       const app = document.getElementById('app');
-      
-      // Update cart badge
       const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
       document.getElementById('cart-count').textContent = count;
 
-      // Update auth button visual
       const authBtn = document.getElementById('auth-btn');
       if (state.user) {
         authBtn.style.background = 'var(--ink)';
-        authBtn.style.color = 'var(--surface)';
-        authBtn.innerHTML = `<span style="font-size:0.7rem; font-weight:700;">${state.user.email[0].toUpperCase()}</span>`;
+        authBtn.style.color = '#fff';
+        authBtn.innerHTML = `<span style="font-size:0.75rem; font-weight:700; font-family:var(--font-sans);">${state.user.email[0].toUpperCase()}</span>`;
       } else {
         authBtn.style.background = '';
         authBtn.style.color = '';
         authBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`;
       }
 
-      if (state.view === 'home') {
-        app.innerHTML = renderHome();
-        initScrollAnimations();
-      } 
-      else if (state.view === 'shop') {
-        app.innerHTML = renderShop();
-        initScrollAnimations();
-      } 
+      if (state.view === 'home') { app.innerHTML = renderHome(); initScrollAnimations(); } 
+      else if (state.view === 'shop') { app.innerHTML = renderShop(); initScrollAnimations(); } 
       else if (state.view === 'product') {
         if (!state.currentProduct) { app.innerHTML = render404(); } 
         else { app.innerHTML = renderProductDetail(state.currentProduct); initScrollAnimations(); }
       } 
-      else if (state.view === 'about') {
-        app.innerHTML = renderAbout();
-      } 
-      else if (state.view === 'contact') {
-        app.innerHTML = renderContact();
-      } 
-      else if (state.view === 'login') {
-        app.innerHTML = renderLogin();
-      }
-      else if (state.view === 'register') {
-        app.innerHTML = renderRegister();
-      }
-      else if (state.view === 'account') {
-        app.innerHTML = renderAccount();
-      }
-      else if (state.view === 'admin-dashboard') {
-        app.innerHTML = renderAdminDashboard();
-      }
-      else if (state.view === 'contributor-dashboard') {
-        app.innerHTML = renderContributorDashboard();
-      }
-      else {
-        app.innerHTML = render404();
-      }
+      else if (state.view === 'about') { app.innerHTML = renderAbout(); }
+      else if (state.view === 'login') { app.innerHTML = renderLogin(); }
+      else if (state.view === 'register') { app.innerHTML = renderRegister(); }
+      else if (state.view === 'account') { app.innerHTML = renderAccount(); }
+      else if (state.view === 'admin-dashboard') { app.innerHTML = renderAdminDashboard(); }
+      else if (state.view === 'contributor-dashboard') { app.innerHTML = renderContributorDashboard(); }
+      else { app.innerHTML = render404(); }
     }
 
     /* =========================================================================
@@ -870,24 +910,24 @@
        ========================================================================= */
 
     function renderHome() {
-      const featuredProducts = PRODUCTS.slice(0, 4);
+      const newArrivals = PRODUCTS.filter(p => p.badge === 'New').slice(0, 4);
+      const featured = PRODUCTS.slice(0, 4);
       
       return `
         <!-- HERO -->
         <section class="hero">
-          <!-- Using a clothing-only image for the hero -->
           <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1600&auto=format&fit=crop" alt="BAGGY FOREVER Collection" class="hero-image" />
           <div class="hero-overlay"></div>
           <div class="hero-content">
             <span class="hero-subtitle">The New Collection</span>
-            <h1 class="hero-title">STYLE THAT<br><em>SPEAKS.</em></h1>
+            <h1 class="hero-title">STYLE THAT<br><span>SPEAKS.</span></h1>
             <p class="hero-desc">
               Discover curated vintage, premium streetwear, and everyday essentials. 
               Each piece is hand-selected for its unique character and quality.
             </p>
             <div class="hero-actions">
-              <button class="btn btn-primary" onclick="navigate('shop')">Explore Collection</button>
-              <button class="btn btn-outline" onclick="navigate('about')">Discover the Brand</button>
+              <button class="btn btn-accent" onclick="navigate('shop')"><span>Explore Collection</span></button>
+              <button class="btn btn-outline" style="border-color:#fff; color:#fff;" onclick="navigate('about')"><span>Discover the Brand</span></button>
             </div>
           </div>
         </section>
@@ -899,19 +939,95 @@
               <h2>New Arrivals</h2>
               <p>Fresh pieces added to our collection.</p>
             </div>
-            <button class="btn btn-outline btn-sm" onclick="navigate('shop')">View All</button>
+            <button class="btn btn-outline btn-sm" onclick="navigate('shop')"><span>View All</span></button>
           </div>
           <div class="product-grid">
-            ${featuredProducts.map(p => renderProductCard(p)).join('')}
+            ${newArrivals.map(p => renderProductCard(p)).join('')}
+          </div>
+        </section>
+
+        <!-- EDITORIAL / FEATURED COLLECTION -->
+        <section class="section container">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
+            <div style="position:relative; overflow:hidden; border-radius: var(--r-md);">
+              <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1000&auto=format&fit=crop" alt="Everyday Essentials" style="width: 100%; display:block; transition: transform var(--dur-slow) var(--ease);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div>
+              <span style="font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px; font-weight: 600;">Editorial</span>
+              <h2 style="margin-bottom: var(--space-sm);">EVERYDAY STYLE. DISTINCTIVE CHARACTER.</h2>
+              <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md); font-size: 1.05rem; font-family: var(--font-body);">
+                Explore contemporary essentials, relaxed silhouettes and versatile pieces designed to complement your everyday wardrobe. 
+                Each item is chosen for its quality, texture, and ability to elevate the ordinary.
+              </p>
+              <button class="btn btn-outline" onclick="navigate('shop')"><span>Shop the Edit</span></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SHOP BY CATEGORY -->
+        <section class="section container">
+          <div class="section-header">
+            <div>
+              <h2>Shop by Category</h2>
+              <p>Find your next favourite piece from our curated categories.</p>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md);">
+            <div class="product-card" onclick="navigate('shop', {cat: 'tshirts'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="T-Shirts" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">T-Shirts</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'hoodies'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop" alt="Hoodies" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Hoodies</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'trousers'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop" alt="Trousers" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Trousers</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'jackets'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop" alt="Jackets" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Jackets</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURED PRODUCTS -->
+        <section class="section container">
+          <div class="section-header">
+            <div>
+              <h2>Featured Selection</h2>
+              <p>Hand-picked highlights from our current collection.</p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="navigate('shop')"><span>View All</span></button>
+          </div>
+          <div class="product-grid">
+            ${featured.map(p => renderProductCard(p)).join('')}
           </div>
         </section>
 
         <!-- AR TEASER -->
         <section class="section container text-center">
-          <div style="max-width: 600px; margin: 0 auto; padding: var(--space-xl) var(--space-md); background: var(--bg-alt); border-radius: var(--r-lg);">
-            <h2 style="margin-bottom: 16px;">YOUR STYLE. YOUR SPACE.</h2>
-            <p style="color: var(--muted); margin-bottom: 24px;">Discover a new way to explore your favourite pieces. Our AR experience is coming soon.</p>
-            <button class="btn btn-primary" onclick="handleARTeaser()">AR EXPERIENCE — COMING SOON</button>
+          <div style="max-width: 700px; margin: 0 auto; padding: var(--space-xl) var(--space-md); background: var(--ink); border-radius: var(--r-lg); color: #fff;">
+            <h2 style="margin-bottom: 16px; color: #fff;">YOUR STYLE. YOUR SPACE.</h2>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 28px; font-family: var(--font-body);">Discover a new way to explore your favourite pieces. Our AR experience is coming soon.</p>
+            <button class="btn btn-accent" onclick="handleARTeaser()"><span>AR EXPERIENCE — COMING SOON</span></button>
           </div>
         </section>
 
@@ -922,11 +1038,7 @@
 
     function renderShop() {
       let filtered = [...PRODUCTS];
-      
-      if (state.filters.category !== 'all') {
-        filtered = filtered.filter(p => p.category === state.filters.category);
-      }
-
+      if (state.filters.category !== 'all') { filtered = filtered.filter(p => p.category === state.filters.category); }
       if (state.filters.sort === 'price-low') { filtered.sort((a, b) => a.price - b.price); }
       else if (state.filters.sort === 'price-high') { filtered.sort((a, b) => b.price - a.price); }
 
@@ -952,16 +1064,18 @@
                 <h4>Category</h4>
                 <div class="filter-list">
                   <label><input type="checkbox" ${state.filters.category === 'all' ? 'checked' : ''} onchange="applyCategoryFilter('all')"> All Categories</label>
-                  <label><input type="checkbox" ${state.filters.category === 'new' ? 'checked' : ''} onchange="applyCategoryFilter('new')"> New Arrivals</label>
-                  <label><input type="checkbox" ${state.filters.category === 'vintage' ? 'checked' : ''} onchange="applyCategoryFilter('vintage')"> Vintage</label>
-                  <label><input type="checkbox" ${state.filters.category === 'thrift' ? 'checked' : ''} onchange="applyCategoryFilter('thrift')"> Thrift</label>
-                  <label><input type="checkbox" ${state.filters.category === 'surplus' ? 'checked' : ''} onchange="applyCategoryFilter('surplus')"> Surplus</label>
+                  <label><input type="checkbox" ${state.filters.category === 'tshirts' ? 'checked' : ''} onchange="applyCategoryFilter('tshirts')"> T-Shirts</label>
+                  <label><input type="checkbox" ${state.filters.category === 'hoodies' ? 'checked' : ''} onchange="applyCategoryFilter('hoodies')"> Hoodies</label>
+                  <label><input type="checkbox" ${state.filters.category === 'trousers' ? 'checked' : ''} onchange="applyCategoryFilter('trousers')"> Trousers</label>
+                  <label><input type="checkbox" ${state.filters.category === 'jackets' ? 'checked' : ''} onchange="applyCategoryFilter('jackets')"> Jackets</label>
+                  <label><input type="checkbox" ${state.filters.category === 'shirts' ? 'checked' : ''} onchange="applyCategoryFilter('shirts')"> Shirts</label>
+                  <label><input type="checkbox" ${state.filters.category === 'coords' ? 'checked' : ''} onchange="applyCategoryFilter('coords')"> Co-ords</label>
                 </div>
               </div>
             </aside>
 
             <div>
-              <div style="margin-bottom: var(--space-md); font-size: 0.9rem; color: var(--muted);">
+              <div style="margin-bottom: var(--space-md); font-family:var(--font-sans); font-size: 0.85rem; color: var(--muted); font-weight:500;">
                 Showing ${filtered.length} results
               </div>
               ${filtered.length > 0 ? `
@@ -970,8 +1084,8 @@
                 </div>
               ` : `
                 <div style="text-align: center; padding: var(--space-xl); color: var(--muted);">
-                  <p>No products found matching your criteria.</p>
-                  <button class="btn btn-outline btn-sm" style="margin-top: 16px;" onclick="resetFilters()">Clear Filters</button>
+                  <p style="font-family:var(--font-body);">No products found matching your criteria.</p>
+                  <button class="btn btn-outline btn-sm" style="margin-top: 16px;" onclick="resetFilters()"><span>Clear Filters</span></button>
                 </div>
               `}
             </div>
@@ -983,13 +1097,12 @@
 
     function renderProductCard(product) {
       const isWished = state.wishlist.includes(product.id);
-      
       return `
         <div class="product-card" onclick="navigate('product', {id: '${product.id}'})">
           <div class="product-image-wrapper">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" />
+            <img src="${product.images[0]}" alt="${product.name}" loading="lazy" />
             ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-            <button class="wishlist-btn ${isWished ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${product.id}')">
+            <button class="wishlist-btn ${isWished ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${product.id}')" aria-label="Toggle Wishlist">
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             </button>
           </div>
@@ -1025,6 +1138,7 @@
 
     function renderProductDetail(product) {
       const isWished = state.wishlist.includes(product.id);
+      const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
       
       return `
         <div class="container" style="padding-bottom: var(--space-xl);">
@@ -1035,14 +1149,19 @@
           </div>
 
           <div class="pdp-layout">
-            <!-- Gallery -->
             <div class="pdp-gallery">
               <div class="pdp-main-image">
-                <img src="${product.image}" alt="${product.name}" />
+                <img src="${product.images[0]}" alt="${product.name}" id="main-product-image" />
+              </div>
+              <div class="pdp-thumbnails">
+                ${product.images.map((img, idx) => `
+                  <div class="pdp-thumb ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this, ${idx})">
+                    <img src="${img}" alt="${product.name} view ${idx + 1}" />
+                  </div>
+                `).join('')}
               </div>
             </div>
 
-            <!-- Info -->
             <div class="pdp-info">
               <h1 class="pdp-title">${product.name}</h1>
               <div class="pdp-price">
@@ -1062,21 +1181,21 @@
               </div>
 
               <div class="pdp-actions">
-                <button class="btn btn-primary" id="add-to-bag-btn" onclick="handleAddToBag('${product.id}')">Add to Bag</button>
-                <button class="btn btn-outline" onclick="handleBuyNow('${product.id}')">Buy Now</button>
-                <button class="btn btn-outline" style="flex: 0 0 auto; padding: 18px;" onclick="toggleWishlist('${product.id}')">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="${isWished ? 'var(--ink)' : 'none'}" stroke="var(--ink)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <button class="btn btn-primary" id="add-to-bag-btn" onclick="handleAddToBag('${product.id}')"><span>Add to Bag</span></button>
+                <button class="btn btn-outline" onclick="handleBuyNow('${product.id}')"><span>Buy Now</span></button>
+                <button class="btn btn-outline" style="flex: 0 0 auto; padding: 20px;" onclick="toggleWishlist('${product.id}')">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="${isWished ? 'var(--accent)' : 'none'}" stroke="${isWished ? 'var(--accent)' : 'var(--ink)'}" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
               </div>
 
               <div class="pdp-ar-teaser">
                 <h4>✨ AR Try-On Coming Soon</h4>
                 <p>Preview this piece in your space before you buy.</p>
-                <button class="btn btn-outline btn-sm" onclick="handleARTeaser()">Learn More</button>
+                <button class="btn btn-outline btn-sm" onclick="handleARTeaser()"><span>Learn More</span></button>
               </div>
 
               <div class="pdp-specs">
-                <h4 style="font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Details</h4>
+                <h4 style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">Details</h4>
                 ${Object.entries(product.specs).map(([key, value]) => `
                   <div class="spec-row">
                     <span class="label">${key}</span>
@@ -1104,12 +1223,30 @@
                   <div class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
                   <p class="review-text">${r.text}</p>
                 </div>
-              `).join('') : '<p style="color:var(--muted)">No reviews yet for this product.</p>'}
+              `).join('') : '<p style="color:var(--muted); padding: var(--space-md); background: var(--bg-alt); border-radius: var(--r-md); text-align:center; font-family:var(--font-body);">No reviews yet for this product. Be the first to share your thoughts.</p>'}
             </div>
           </div>
+
+          <!-- Related Products -->
+          ${related.length > 0 ? `
+            <div class="section" style="padding-top: var(--space-xl);">
+              <div class="section-header">
+                <div><h2>You May Also Like</h2></div>
+              </div>
+              <div class="product-grid">
+                ${related.map(p => renderProductCard(p)).join('')}
+              </div>
+            </div>
+          ` : ''}
         </div>
         ${renderStoreInfo()}
       `;
+    }
+
+    function changeMainImage(src, thumb, idx) {
+      document.getElementById('main-product-image').src = src;
+      document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
     }
 
     function renderAbout() {
@@ -1117,7 +1254,7 @@
         <div class="container" style="padding-top: var(--space-xl); padding-bottom: var(--space-xl);">
           <div style="max-width: 800px; margin: 0 auto; text-align: center;">
             <h1 style="margin-bottom: var(--space-md);">The BAGGY FOREVER Story</h1>
-            <p style="font-size: 1.2rem; color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-lg);">
+            <p style="font-size: 1.2rem; color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-lg); font-family: var(--font-body);">
               BAGGY FOREVER was born from a simple idea: that great style should be accessible, authentic, and personal.
             </p>
           </div>
@@ -1128,11 +1265,11 @@
             </div>
             <div>
               <h2 style="margin-bottom: var(--space-sm);">Curated with Intention</h2>
-              <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md);">
+              <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md); font-family: var(--font-body);">
                 We hand-pick every piece in our collection. From vintage finds to premium streetwear, 
                 we believe in quality over quantity and style over trends.
               </p>
-              <p style="color: var(--ink-light); line-height: 1.8;">
+              <p style="color: var(--ink-light); line-height: 1.8; font-family: var(--font-body);">
                 Located in the heart of Bhopal, our store is a destination for those who appreciate 
                 unique fashion and thoughtful design.
               </p>
@@ -1143,49 +1280,35 @@
       `;
     }
 
-    function renderContact() {
-      return `
-        <div class="container" style="padding-top: var(--space-xl); padding-bottom: var(--space-xl);">
-          <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-            <h1 style="margin-bottom: var(--space-md);">Get in Touch</h1>
-            <p style="color: var(--ink-light); margin-bottom: var(--space-xl); font-size: 1.1rem;">
-              Have a question or want to visit? We'd love to hear from you.
-            </p>
-          </div>
-          ${renderStoreInfo()}
-        </div>
-      `;
-    }
-
     function render404() {
       return `
         <div class="container" style="padding: var(--space-xl) 0; text-align: center; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-          <h1 style="font-size: 4rem; margin-bottom: 16px;">404</h1>
-          <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 32px;">The page you are looking for does not exist.</p>
-          <button class="btn btn-primary" onclick="navigate('home')">Return to Home</button>
+          <h1 style="font-size: 6rem; margin-bottom: 16px; color: var(--accent);">404</h1>
+          <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; font-family:var(--font-body);">The page you are looking for does not exist.</p>
+          <button class="btn btn-primary" onclick="navigate('home')"><span>Return to Home</span></button>
         </div>
       `;
     }
 
     function renderStoreInfo() {
       return `
-        <section style="background: var(--bg-alt); padding: var(--space-xl) 0; margin-top: var(--space-xl);">
+        <section class="store-info-section">
           <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
               <div>
                 <h2 style="margin-bottom: var(--space-md);">Visit Our Store</h2>
-                <div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="var(--ink)" fill="none" stroke-width="1.5" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <div class="store-detail">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                   <div>
-                    <h4 style="font-family: var(--font-sans); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Address</h4>
-                    <p style="color: var(--ink-light); font-size: 0.95rem; line-height: 1.5;">Aara Machine Road, near Valmiki Mandir, Fish Market,<br>Taraisewaniya, Bhopal, Madhya Pradesh 462036</p>
+                    <h4>Address</h4>
+                    <p>Aara Machine Road, near Valmiki Mandir, Fish Market,<br>Taraisewaniya, Bhopal, Madhya Pradesh 462036</p>
                   </div>
                 </div>
-                <a href="https://maps.google.com/?q=Aara+Machine+Road+Bhopal" target="_blank" class="btn btn-outline btn-sm">Get Directions</a>
+                <a href="https://maps.google.com/?q=Aara+Machine+Road+Bhopal" target="_blank" class="btn btn-outline btn-sm" style="margin-top: 16px;"><span>Get Directions</span></a>
               </div>
               <div style="display: flex; flex-direction: column; justify-content: center;">
                 <h2 style="margin-bottom: var(--space-md);">About BAGGY FOREVER</h2>
-                <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md);">
+                <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md); font-family: var(--font-body);">
                   We are a clothing store dedicated to curating unique, high-quality fashion. 
                   Our collection features vintage finds, premium streetwear, and timeless essentials.
                 </p>
@@ -1205,24 +1328,24 @@
                 <h4>Shop</h4>
                 <ul>
                   <li><a onclick="navigate('shop')">All Products</a></li>
-                  <li><a onclick="navigate('shop', {cat: 'new'})">New Arrivals</a></li>
-                  <li><a onclick="navigate('shop', {cat: 'vintage'})">Vintage</a></li>
+                  <li><a onclick="navigate('shop', {cat: 'tshirts'})">T-Shirts</a></li>
+                  <li><a onclick="navigate('shop', {cat: 'hoodies'})">Hoodies</a></li>
                 </ul>
               </div>
               <div class="footer-col">
                 <h4>Support</h4>
                 <ul>
-                  <li><a onclick="navigate('contact')">Contact Us</a></li>
-                  <li><a onclick="openModal('Returns & Refunds', '<p>Our returns policy is being finalised. Please contact the store directly for assistance.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'>Close</button>')">Returns & Refunds</a></li>
-                  <li><a onclick="openModal('Shipping Policy', '<p>Shipping details are being updated. Please check back soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'>Close</button>')">Shipping Policy</a></li>
+                  <li><a onclick="navigate('about')">About Us</a></li>
+                  <li><a onclick="openModal('Returns & Refunds', '<p>Our returns policy is being finalised. Please contact the store directly for assistance.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'><span>Close</span></button>')">Returns & Refunds</a></li>
+                  <li><a onclick="openModal('Shipping Policy', '<p>Shipping details are being updated. Please check back soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'><span>Close</span></button>')">Shipping Policy</a></li>
                 </ul>
               </div>
               <div class="footer-col">
                 <h4>Account</h4>
                 <ul>
                   <li><a onclick="handleAuthClick()">${state.user ? 'My Account' : 'Login / Register'}</a></li>
-                  <li><a onclick="openModal('Privacy Policy', '<p>Your privacy is important to us. Full policy coming soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'>Close</button>')">Privacy Policy</a></li>
-                  <li><a onclick="openModal('Terms & Conditions', '<p>Terms and conditions are being prepared. Please check back soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'>Close</button>')">Terms & Conditions</a></li>
+                  <li><a onclick="openModal('Privacy Policy', '<p>Your privacy is important to us. Full policy coming soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'><span>Close</span></button>')">Privacy Policy</a></li>
+                  <li><a onclick="openModal('Terms & Conditions', '<p>Terms and conditions are being prepared. Please check back soon.</p><button class=\\'btn btn-primary\\' style=\\'width:100%\\' onclick=\\'closeModal()\\'><span>Close</span></button>')">Terms & Conditions</a></li>
                 </ul>
               </div>
             </div>
@@ -1241,33 +1364,33 @@
 
     function renderLogin() {
       return `
-        <div class="container">
-          <div class="auth-container">
-            <h2>Welcome Back</h2>
-            <form class="auth-form" onsubmit="event.preventDefault(); handleLoginForm();">
+        <div class="container" style="min-height:70vh; display:flex; align-items:center; justify-content:center;">
+          <div class="auth-container" style="background:var(--surface); padding:var(--space-xl); border-radius:var(--r-lg); box-shadow:var(--sh-md); max-width:420px; width:100%;">
+            <h2 style="text-align:center; margin-bottom:var(--space-md);">Welcome Back</h2>
+            <form onsubmit="event.preventDefault(); handleLoginForm();" style="display:flex; flex-direction:column; gap:var(--space-sm);">
               <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="login-email" placeholder="you@example.com" required />
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Email Address</label>
+                <input type="email" id="login-email" placeholder="you@example.com" required style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);" />
               </div>
               <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="login-password" placeholder="••••••••" required />
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Password</label>
+                <input type="password" id="login-password" placeholder="••••••••" required style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);" />
               </div>
               <div class="form-group">
-                <label>Login As (Demo Only)</label>
-                <select id="login-role">
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Login As (Demo Only)</label>
+                <select id="login-role" style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);">
                   <option value="customer">Customer</option>
                   <option value="contributor">Contributor</option>
                   <option value="admin">Admin</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Sign In</button>
+              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;"><span>Sign In</span></button>
             </form>
-            <div class="auth-switch">
-              Don't have an account? <a onclick="navigate('register')">Create one</a>
+            <div style="text-align:center; margin-top:var(--space-md); font-size:0.85rem; color:var(--muted); font-family:var(--font-body);">
+              Don't have an account? <a onclick="navigate('register')" style="color:var(--accent); font-weight:600; cursor:pointer;">Create one</a>
             </div>
-            <div style="margin-top:16px; text-align:center; font-size:0.75rem; color:var(--muted);">
-              Demo credentials: any email + password will work. Select a role above.
+            <div style="margin-top:16px; text-align:center; font-size:0.75rem; color:var(--muted); font-family:var(--font-body);">
+              Demo credentials: any email + password will work.
             </div>
           </div>
         </div>
@@ -1282,26 +1405,26 @@
 
     function renderRegister() {
       return `
-        <div class="container">
-          <div class="auth-container">
-            <h2>Create Account</h2>
-            <form class="auth-form" onsubmit="event.preventDefault(); handleRegisterForm();">
+        <div class="container" style="min-height:70vh; display:flex; align-items:center; justify-content:center;">
+          <div class="auth-container" style="background:var(--surface); padding:var(--space-xl); border-radius:var(--r-lg); box-shadow:var(--sh-md); max-width:420px; width:100%;">
+            <h2 style="text-align:center; margin-bottom:var(--space-md);">Create Account</h2>
+            <form onsubmit="event.preventDefault(); handleRegisterForm();" style="display:flex; flex-direction:column; gap:var(--space-sm);">
               <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="reg-name" placeholder="Your Name" required />
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Full Name</label>
+                <input type="text" id="reg-name" placeholder="Your Name" required style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);" />
               </div>
               <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="reg-email" placeholder="you@example.com" required />
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Email Address</label>
+                <input type="email" id="reg-email" placeholder="you@example.com" required style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);" />
               </div>
               <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="reg-password" placeholder="••••••••" required />
+                <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Password</label>
+                <input type="password" id="reg-password" placeholder="••••••••" required style="width:100%; padding:14px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--bg); font-family:var(--font-body);" />
               </div>
-              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Create Account</button>
+              <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;"><span>Create Account</span></button>
             </form>
-            <div class="auth-switch">
-              Already have an account? <a onclick="navigate('login')">Sign In</a>
+            <div style="text-align:center; margin-top:var(--space-md); font-size:0.85rem; color:var(--muted); font-family:var(--font-body);">
+              Already have an account? <a onclick="navigate('login')" style="color:var(--accent); font-weight:600; cursor:pointer;">Sign In</a>
             </div>
           </div>
         </div>
@@ -1310,7 +1433,6 @@
 
     function handleRegisterForm() {
       const email = document.getElementById('reg-email').value;
-      // Simulate registration as a customer
       handleLogin(email, 'customer');
     }
 
@@ -1318,30 +1440,30 @@
       if (!state.user) { navigate('login'); return ''; }
       
       return `
-        <div class="container">
-          <div class="dashboard-container">
-            <aside class="dashboard-sidebar">
-              <h3>My Account</h3>
-              <nav class="dashboard-nav">
-                <a class="active" onclick="navigate('account')">Profile</a>
-                <a onclick="navigate('shop')">Shop</a>
-                <a onclick="handleLogout()" style="color:var(--danger); margin-top:8px;">Logout</a>
+        <div class="container" style="padding:var(--space-lg) 0; min-height:70vh;">
+          <div style="display:grid; grid-template-columns:250px 1fr; gap:var(--space-lg);">
+            <aside style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-md); border:1px solid var(--line); height:fit-content;">
+              <h3 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:var(--space-sm); border-bottom:1px solid var(--line); padding-bottom:8px;">My Account</h3>
+              <nav style="display:flex; flex-direction:column; gap:4px;">
+                <a style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; background:var(--bg-alt); font-weight:600; cursor:pointer;">Profile</a>
+                <a onclick="navigate('shop')" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; cursor:pointer;">Shop</a>
+                <a onclick="handleLogout()" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; color:var(--danger); cursor:pointer; margin-top:8px;">Logout</a>
               </nav>
             </aside>
-            <main class="dashboard-main">
-              <h2>Welcome, ${state.user.email}</h2>
-              <p style="color:var(--muted); margin-bottom:var(--space-md);">Role: ${state.user.role.toUpperCase()}</p>
-              <div class="stats-grid">
-                <div class="stat-card">
-                  <div class="number">${state.wishlist.length}</div>
-                  <div class="label">Wishlist Items</div>
+            <main style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-lg); border:1px solid var(--line);">
+              <h2 style="margin-bottom:var(--space-md);">Welcome, ${state.user.email}</h2>
+              <p style="color:var(--muted); margin-bottom:var(--space-md); font-family:var(--font-body);">Role: ${state.user.role.toUpperCase()}</p>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:var(--space-md); margin-bottom:var(--space-lg);">
+                <div style="background:var(--bg); padding:var(--space-md); border-radius:var(--r-md); text-align:center;">
+                  <div style="font-size:2rem; font-weight:700; font-family:var(--font-display); color:var(--accent);">${state.wishlist.length}</div>
+                  <div style="font-family:var(--font-sans); font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em;">Wishlist Items</div>
                 </div>
-                <div class="stat-card">
-                  <div class="number">${state.cart.reduce((s,i)=>s+i.qty,0)}</div>
-                  <div class="label">Bag Items</div>
+                <div style="background:var(--bg); padding:var(--space-md); border-radius:var(--r-md); text-align:center;">
+                  <div style="font-size:2rem; font-weight:700; font-family:var(--font-display); color:var(--accent);">${state.cart.reduce((s,i)=>s+i.qty,0)}</div>
+                  <div style="font-family:var(--font-sans); font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em;">Bag Items</div>
                 </div>
               </div>
-              <p style="color:var(--ink-light);">Your shopping bag and wishlist are saved locally and will persist across sessions.</p>
+              <p style="color:var(--ink-light); font-family:var(--font-body);">Your shopping bag and wishlist are saved locally and will persist across sessions.</p>
             </main>
           </div>
         </div>
@@ -1352,54 +1474,52 @@
       if (!state.user || state.user.role !== 'admin') { navigate('login'); return ''; }
       
       return `
-        <div class="container">
-          <div class="dashboard-container">
-            <aside class="dashboard-sidebar">
-              <h3>Admin Panel</h3>
-              <nav class="dashboard-nav">
-                <a class="active" onclick="navigate('admin-dashboard')">Dashboard</a>
-                <a onclick="navigate('shop')">View Store</a>
-                <a onclick="handleLogout()" style="color:var(--danger); margin-top:8px;">Logout</a>
+        <div class="container" style="padding:var(--space-lg) 0; min-height:70vh;">
+          <div style="display:grid; grid-template-columns:250px 1fr; gap:var(--space-lg);">
+            <aside style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-md); border:1px solid var(--line); height:fit-content;">
+              <h3 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:var(--space-sm); border-bottom:1px solid var(--line); padding-bottom:8px;">Admin Panel</h3>
+              <nav style="display:flex; flex-direction:column; gap:4px;">
+                <a style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; background:var(--bg-alt); font-weight:600; cursor:pointer;">Dashboard</a>
+                <a onclick="navigate('shop')" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; cursor:pointer;">View Store</a>
+                <a onclick="handleLogout()" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; color:var(--danger); cursor:pointer; margin-top:8px;">Logout</a>
               </nav>
             </aside>
-            <main class="dashboard-main">
-              <h2>Dashboard Overview</h2>
-              <div class="stats-grid">
-                <div class="stat-card">
-                  <div class="number">${PRODUCTS.length}</div>
-                  <div class="label">Total Products</div>
+            <main style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-lg); border:1px solid var(--line);">
+              <h2 style="margin-bottom:var(--space-md);">Dashboard Overview</h2>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:var(--space-md); margin-bottom:var(--space-lg);">
+                <div style="background:var(--bg); padding:var(--space-md); border-radius:var(--r-md); text-align:center;">
+                  <div style="font-size:2rem; font-weight:700; font-family:var(--font-display); color:var(--accent);">${PRODUCTS.length}</div>
+                  <div style="font-family:var(--font-sans); font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em;">Total Products</div>
                 </div>
-                <div class="stat-card">
-                  <div class="number">${PRODUCTS.filter(p=>p.badge==='New').length}</div>
-                  <div class="label">New Arrivals</div>
-                </div>
-                <div class="stat-card">
-                  <div class="number">${PRODUCTS.filter(p=>p.category==='vintage').length}</div>
-                  <div class="label">Vintage Items</div>
+                <div style="background:var(--bg); padding:var(--space-md); border-radius:var(--r-md); text-align:center;">
+                  <div style="font-size:2rem; font-weight:700; font-family:var(--font-display); color:var(--accent);">${PRODUCTS.filter(p=>p.badge==='New').length}</div>
+                  <div style="font-family:var(--font-sans); font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em;">New Arrivals</div>
                 </div>
               </div>
-
               <h3 style="margin-top:var(--space-lg); margin-bottom:var(--space-sm);">Product Management (Demo)</h3>
-              <p style="font-size:0.85rem; color:var(--muted); margin-bottom:var(--space-sm);">In a real deployment, these actions would be protected by backend authentication and database policies.</p>
-              
-              <table class="admin-table">
-                <thead>
-                  <tr><th>Name</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr>
-                </thead>
-                <tbody>
-                  ${PRODUCTS.map(p => `
+              <p style="font-size:0.85rem; color:var(--muted); margin-bottom:var(--space-sm); font-family:var(--font-body);">In a real deployment, these actions would be protected by backend authentication.</p>
+              <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; margin-top:var(--space-md);">
+                  <thead>
                     <tr>
-                      <td>${p.name}</td>
-                      <td>${p.category}</td>
-                      <td>${formatCurrency(p.price)}</td>
-                      <td><span style="color:var(--success); font-size:0.8rem;">Active</span></td>
-                      <td>
-                        <button class="btn btn-outline btn-sm" onclick="showToast('Edit feature requires backend integration')">Edit</button>
-                      </td>
+                      <th style="text-align:left; padding:12px; border-bottom:1px solid var(--line); font-family:var(--font-sans); font-size:0.75rem; text-transform:uppercase; color:var(--muted);">Image</th>
+                      <th style="text-align:left; padding:12px; border-bottom:1px solid var(--line); font-family:var(--font-sans); font-size:0.75rem; text-transform:uppercase; color:var(--muted);">Name</th>
+                      <th style="text-align:left; padding:12px; border-bottom:1px solid var(--line); font-family:var(--font-sans); font-size:0.75rem; text-transform:uppercase; color:var(--muted);">Price</th>
+                      <th style="text-align:left; padding:12px; border-bottom:1px solid var(--line); font-family:var(--font-sans); font-size:0.75rem; text-transform:uppercase; color:var(--muted);">Actions</th>
                     </tr>
-                  `).join('')}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    ${PRODUCTS.map(p => `
+                      <tr style="border-bottom:1px solid var(--line);">
+                        <td style="padding:12px;"><img src="${p.images[0]}" alt="${p.name}" style="width:48px; height:60px; object-fit:cover; border-radius:4px;" /></td>
+                        <td style="padding:12px; font-family:var(--font-body); font-size:0.9rem;">${p.name}</td>
+                        <td style="padding:12px; font-family:var(--font-sans); font-weight:600;">${formatCurrency(p.price)}</td>
+                        <td style="padding:12px;"><button class="btn btn-outline btn-sm" onclick="showToast('Edit requires backend')"><span>Edit</span></button></td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
             </main>
           </div>
         </div>
@@ -1410,41 +1530,40 @@
       if (!state.user || state.user.role !== 'contributor') { navigate('login'); return ''; }
       
       return `
-        <div class="container">
-          <div class="dashboard-container">
-            <aside class="dashboard-sidebar">
-              <h3>Contributor Panel</h3>
-              <nav class="dashboard-nav">
-                <a class="active" onclick="navigate('contributor-dashboard')">Dashboard</a>
-                <a onclick="navigate('shop')">View Store</a>
-                <a onclick="handleLogout()" style="color:var(--danger); margin-top:8px;">Logout</a>
+        <div class="container" style="padding:var(--space-lg) 0; min-height:70vh;">
+          <div style="display:grid; grid-template-columns:250px 1fr; gap:var(--space-lg);">
+            <aside style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-md); border:1px solid var(--line); height:fit-content;">
+              <h3 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:var(--space-sm); border-bottom:1px solid var(--line); padding-bottom:8px;">Contributor Panel</h3>
+              <nav style="display:flex; flex-direction:column; gap:4px;">
+                <a style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; background:var(--bg-alt); font-weight:600; cursor:pointer;">Dashboard</a>
+                <a onclick="navigate('shop')" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; cursor:pointer;">View Store</a>
+                <a onclick="handleLogout()" style="padding:10px 12px; border-radius:var(--r-sm); font-family:var(--font-sans); font-size:0.9rem; color:var(--danger); cursor:pointer; margin-top:8px;">Logout</a>
               </nav>
             </aside>
-            <main class="dashboard-main">
-              <h2>Contributor Dashboard</h2>
-              <p style="color:var(--muted); margin-bottom:var(--space-md);">You can submit product drafts for administrator review.</p>
-              
+            <main style="background:var(--surface); border-radius:var(--r-md); padding:var(--space-lg); border:1px solid var(--line);">
+              <h2 style="margin-bottom:var(--space-md);">Contributor Dashboard</h2>
+              <p style="color:var(--muted); margin-bottom:var(--space-md); font-family:var(--font-body);">You can submit product drafts for administrator review.</p>
               <div style="background:var(--bg-alt); padding:var(--space-md); border-radius:var(--r-md);">
                 <h3 style="margin-bottom:var(--space-sm);">Submit New Product Draft</h3>
                 <form onsubmit="event.preventDefault(); showToast('Draft submitted for review (demo)');">
-                  <div class="form-group" style="margin-bottom:12px;">
-                    <label>Product Name</label>
-                    <input type="text" placeholder="e.g., Vintage Denim Jacket" required />
+                  <div style="margin-bottom:12px;">
+                    <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Product Name</label>
+                    <input type="text" placeholder="e.g., Vintage Denim Jacket" required style="width:100%; padding:12px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface); font-family:var(--font-body);" />
                   </div>
-                  <div class="form-group" style="margin-bottom:12px;">
-                    <label>Category</label>
-                    <select>
-                      <option>New Arrivals</option>
-                      <option>Vintage</option>
-                      <option>Thrift</option>
-                      <option>Surplus</option>
+                  <div style="margin-bottom:12px;">
+                    <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Category</label>
+                    <select style="width:100%; padding:12px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface); font-family:var(--font-body);">
+                      <option>T-Shirts</option>
+                      <option>Hoodies</option>
+                      <option>Trousers</option>
+                      <option>Jackets</option>
                     </select>
                   </div>
-                  <div class="form-group" style="margin-bottom:12px;">
-                    <label>Price (₹)</label>
-                    <input type="number" placeholder="1200" required />
+                  <div style="margin-bottom:12px;">
+                    <label style="font-family:var(--font-sans); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); display:block; margin-bottom:6px;">Price (₹)</label>
+                    <input type="number" placeholder="1200" required style="width:100%; padding:12px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface); font-family:var(--font-body);" />
                   </div>
-                  <button type="submit" class="btn btn-primary btn-sm">Submit Draft</button>
+                  <button type="submit" class="btn btn-primary btn-sm"><span>Submit Draft</span></button>
                 </form>
               </div>
             </main>
@@ -1486,11 +1605,28 @@
         });
       }, { threshold: 0.1 });
 
-      document.querySelectorAll('.product-card, .section-header').forEach(el => {
-        el.classList.add('fade-in');
+      document.querySelectorAll('.product-card, .section-header, .pdp-info, .pdp-gallery').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+        
         observer.observe(el);
       });
     }
+
+    // Override the observer callback to apply the visible class with styles
+    const originalIntersectionObserver = window.IntersectionObserver;
+    window.IntersectionObserver = function(callback, options) {
+      return new originalIntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+        callback(entries);
+      }, options);
+    };
 
     function toggleMobileMenu() {
       showToast('Mobile menu clicked');
@@ -1498,6 +1634,17 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { closeCart(); closeModal(); }
+    });
+
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('back-to-top');
+      
+      if (window.scrollY > 50) { navbar.classList.add('scrolled'); } 
+      else { navbar.classList.remove('scrolled'); }
+
+      if (window.scrollY > 400) { backToTop.classList.add('visible'); } 
+      else { backToTop.classList.remove('visible'); }
     });
 
     /* =========================================================================

@@ -469,69 +469,21 @@
 
   <script>
     /* =========================================================================
-       DATA & STATE (Now using your local images)
+       DATA & STATE (Using all 8 local images across 10 products)
        ========================================================================= */
     const PRODUCTS = [
-      { 
-        id: 'ts-001', 
-        name: 'Oversized Heavyweight Tee', 
-        price: 799, 
-        mrp: 1200, 
-        category: 'tshirts', 
-        badge: 'New', 
-        sizes: ['S', 'M', 'L', 'XL'], 
-        images: [
-          'assets/images/Screenshot_20261028_155953_Amazon.jpg', 
-          'assets/images/Screenshot_20261028_160114_Amazon.jpg'
-        ], 
-        description: 'Premium heavyweight cotton tee with a relaxed, oversized fit.', 
-        specs: { Fabric: '100% Cotton', Fit: 'Oversized' } 
-      },
-      { 
-        id: 'hd-001', 
-        name: 'Black Harocott Hoodie', 
-        price: 1200, 
-        mrp: 1800, 
-        category: 'hoodies', 
-        badge: 'New', 
-        sizes: ['S', 'M', 'L', 'XL'], 
-        images: [
-          'assets/images/Screenshot_20261028_160206_Amazon.jpg',
-          'assets/images/Screenshot_20261028_160315_Amazon.jpg'
-        ], 
-        description: 'Premium heavyweight cotton hoodie with custom sleeve print.', 
-        specs: { Fabric: 'Cotton Fleece', Fit: 'Relaxed' } 
-      },
-      { 
-        id: 'tr-001', 
-        name: 'Baggy Fit Denim', 
-        price: 1499, 
-        mrp: 2199, 
-        category: 'trousers', 
-        badge: 'New', 
-        sizes: ['30', '32', '34', '36'], 
-        images: [
-          'assets/images/Screenshot_20261028_160442_Amazon.jpg',
-          'assets/images/Screenshot_20261028_160632_Amazon.jpg'
-        ], 
-        description: 'Ultra-relaxed baggy denim with a vintage wash.', 
-        specs: { Fabric: '100% Cotton', Fit: 'Baggy' } 
-      },
-      { 
-        id: 'jk-001', 
-        name: 'Classic Denim Jacket', 
-        price: 1699, 
-        mrp: 2499, 
-        category: 'jackets', 
-        badge: 'New', 
-        sizes: ['S', 'M', 'L'], 
-        images: [
-          'assets/images/Screenshot_20261028_160837_Amazon.jpg',
-          'assets/images/Screenshot_20261028_161037_Amazon.jpg'
-        ], 
-        description: 'Timeless denim jacket with a modern oversized fit.', 
-        specs: { Fabric: 'Cotton Denim', Fit: 'Oversized' } 
-      }
+      { id: 'ts-001', name: 'Oversized Heavyweight Tee', price: 799, mrp: 1200, category: 'tshirts', badge: 'New', sizes: ['S', 'M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_155953_Amazon.jpg', 'assets/images/Screenshot_20261028_160114_Amazon.jpg'], description: 'Premium heavyweight cotton tee with a relaxed, oversized fit.', specs: { Fabric: '100% Cotton', Fit: 'Oversized' } },
+      { id: 'hd-001', name: 'Black Harocott Hoodie', price: 1200, mrp: 1800, category: 'hoodies', badge: 'New', sizes: ['S', 'M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_160206_Amazon.jpg', 'assets/images/Screenshot_20261028_160315_Amazon.jpg'], description: 'Premium heavyweight cotton hoodie with custom sleeve print.', specs: { Fabric: 'Cotton Fleece', Fit: 'Relaxed' } },
+      { id: 'tr-001', name: 'Baggy Fit Denim', price: 1499, mrp: 2199, category: 'trousers', badge: 'New', sizes: ['30', '32', '34', '36'], images: ['assets/images/Screenshot_20261028_160442_Amazon.jpg', 'assets/images/Screenshot_20261028_160632_Amazon.jpg'], description: 'Ultra-relaxed baggy denim with a vintage wash.', specs: { Fabric: '100% Cotton', Fit: 'Baggy' } },
+      { id: 'jk-001', name: 'Classic Denim Jacket', price: 1699, mrp: 2499, category: 'jackets', badge: 'New', sizes: ['S', 'M', 'L'], images: ['assets/images/Screenshot_20261028_160837_Amazon.jpg', 'assets/images/Screenshot_20261028_161037_Amazon.jpg'], description: 'Timeless denim jacket with a modern oversized fit.', specs: { Fabric: 'Cotton Denim', Fit: 'Oversized' } },
+      
+      /* Duplicating to fill 10 products while using your 8 images */
+      { id: 'ts-002', name: 'Relaxed Fit Tee', price: 599, mrp: 999, category: 'tshirts', badge: '', sizes: ['S', 'M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_160114_Amazon.jpg', 'assets/images/Screenshot_20261028_155953_Amazon.jpg'], description: 'Everyday essential.', specs: { Fabric: 'Cotton', Fit: 'Regular' } },
+      { id: 'hd-002', name: 'Oversized Graphic Hoodie', price: 1399, mrp: 1999, category: 'hoodies', badge: '', sizes: ['M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_160315_Amazon.jpg', 'assets/images/Screenshot_20261028_160206_Amazon.jpg'], description: 'Bold graphic print.', specs: { Fabric: 'Cotton Blend', Fit: 'Oversized' } },
+      { id: 'tr-002', name: 'Cargo Pants - Olive', price: 999, mrp: 1599, category: 'trousers', badge: 'Surplus', sizes: ['30', '32', '34', '36'], images: ['assets/images/Screenshot_20261028_160632_Amazon.jpg', 'assets/images/Screenshot_20261028_160442_Amazon.jpg'], description: 'Utility cargo pants.', specs: { Fabric: 'Cotton Twill', Fit: 'Relaxed' } },
+      { id: 'jk-002', name: 'Sherpa Fleece Zip Jacket', price: 1499, mrp: 2200, category: 'jackets', badge: 'Surplus', sizes: ['M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_161037_Amazon.jpg', 'assets/images/Screenshot_20261028_160837_Amazon.jpg'], description: 'Warm sherpa fleece.', specs: { Fabric: 'Polyester', Fit: 'Regular' } },
+      { id: 'ts-003', name: 'Vintage Graphic Tee', price: 699, mrp: 999, category: 'tshirts', badge: 'Rare', sizes: ['M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_155953_Amazon.jpg'], description: 'Soft, worn-in vintage tee.', specs: { Fabric: 'Cotton', Fit: 'Relaxed' } },
+      { id: 'hd-003', name: 'Grey Crewneck Sweatshirt', price: 999, mrp: 1499, category: 'hoodies', badge: '', sizes: ['S', 'M', 'L', 'XL'], images: ['assets/images/Screenshot_20261028_160206_Amazon.jpg'], description: 'A classic crewneck sweatshirt.', specs: { Fabric: 'Cotton-Poly', Fit: 'Regular' } }
     ];
 
     let state = {
@@ -879,7 +831,7 @@
     function renderHome() {
       return `
         <section class="hero">
-          <!-- Using your local product image as the hero background -->
+          <!-- Using your local image for the Hero background -->
           <img src="assets/images/Screenshot_20261028_160206_Amazon.jpg" alt="Hero" class="hero-image" />
           <div class="hero-overlay"></div>
           <div class="hero-content">
@@ -901,6 +853,84 @@
             ${PRODUCTS.filter(p => p.badge === 'New').map(p => renderCard(p)).join('')}
           </div>
         </section>
+
+        <!-- Editorial Section -->
+        <section class="section container">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center;">
+            <div style="position:relative; overflow:hidden; border-radius: var(--r-md);">
+              <img src="assets/images/Screenshot_20261028_161037_Amazon.jpg" alt="Everyday Essentials" style="width: 100%; display:block; transition: transform var(--dur-slow) var(--ease);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div>
+              <span style="font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px; font-weight: 600;">Editorial</span>
+              <h2 style="margin-bottom: var(--space-sm);">EVERYDAY STYLE. DISTINCTIVE CHARACTER.</h2>
+              <p style="color: var(--ink-light); line-height: 1.8; margin-bottom: var(--space-md); font-size: 1.05rem; font-family: var(--font-body);">
+                Explore contemporary essentials, relaxed silhouettes and versatile pieces designed to complement your everyday wardrobe. 
+                Each item is chosen for its quality, texture, and ability to elevate the ordinary.
+              </p>
+              <button class="btn btn-outline" onclick="navigate('shop')"><span>Shop the Edit</span></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Shop by Category -->
+        <section class="section container">
+          <div class="section-header">
+            <div><h2>Shop by Category</h2><p>Find your next favourite piece from our curated categories.</p></div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md);">
+            <div class="product-card" onclick="navigate('shop', {cat: 'tshirts'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="assets/images/Screenshot_20261028_155953_Amazon.jpg" alt="T-Shirts" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">T-Shirts</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'hoodies'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="assets/images/Screenshot_20261028_160206_Amazon.jpg" alt="Hoodies" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Hoodies</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'trousers'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="assets/images/Screenshot_20261028_160442_Amazon.jpg" alt="Trousers" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Trousers</h3>
+              </div>
+            </div>
+            <div class="product-card" onclick="navigate('shop', {cat: 'jackets'})" style="cursor:pointer;">
+              <div class="product-image-wrapper" style="aspect-ratio: 1;">
+                <img src="assets/images/Screenshot_20261028_160837_Amazon.jpg" alt="Jackets" />
+              </div>
+              <div class="product-info" style="text-align:center; padding: var(--space-md);">
+                <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Jackets</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section container">
+          <div class="section-header">
+            <div><h2>Featured Selection</h2><p>Hand-picked highlights from our current collection.</p></div>
+            <button class="btn btn-outline btn-sm" onclick="navigate('shop')"><span>View All</span></button>
+          </div>
+          <div class="product-grid">
+            ${PRODUCTS.slice(0, 4).map(p => renderCard(p)).join('')}
+          </div>
+        </section>
+
+        <section class="section container text-center">
+          <div style="max-width: 700px; margin: 0 auto; padding: var(--space-xl) var(--space-md); background: var(--ink); border-radius: var(--r-lg); color: #fff;">
+            <h2 style="margin-bottom: 16px; color: #fff;">YOUR STYLE. YOUR SPACE.</h2>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 28px; font-family: var(--font-body);">Discover a new way to explore your favourite pieces. Our AR experience is coming soon.</p>
+            <button class="btn btn-accent" onclick="openARModal('ts-001')"><span>AR EXPERIENCE — PREVIEW</span></button>
+          </div>
+        </section>
+
         ${renderFooter()}
       `;
     }
